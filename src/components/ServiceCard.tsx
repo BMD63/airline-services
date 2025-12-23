@@ -22,13 +22,17 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
         <span 
           className="text-3xl"
           role="img"
-          aria-label={service.icon === '🍽️' ? 'Питание' : 
-                    service.icon === '🧳' ? 'Багаж' :
-                    service.icon === '💺' ? 'Место' :
-                    service.icon === '🛡️' ? 'Страхование' :
-                    service.icon === '✨' ? 'Бизнес-зал' :
-                    service.icon === '⚡' ? 'Приоритет' :
-                    service.icon === '📡' ? 'Wi-Fi' : 'Услуга'}
+          aria-label={
+            service.icon === '🍽️' ? 'Питание' : 
+            service.icon === '🧳' ? 'Багаж' :
+            service.icon === '💺' ? 'Место' :
+            service.icon === '🛡️' ? 'Страхование' :
+            service.icon === '✨' ? 'Бизнес-зал' :
+            service.icon === '⚡' ? 'Приоритет' :
+            service.icon === '📡' ? 'Wi-Fi' :
+            service.icon === '🪂' ? 'Парашют' :
+            service.icon === '📍' ? 'Посадка' : 'Услуга'
+        }
         >
           {service.icon}
         </span>
