@@ -1,73 +1,148 @@
-# React + TypeScript + Vite
+# Сервис дополнительных услуг для авиапассажиров
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**MVP веб-приложения** для выбора и оформления дополнительных услуг при авиаперелетах.  
+Проект выполнен в рамках технического задания с использованием современных технологий React-стека.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-19.2-blue?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?logo=typescript)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?logo=tailwind-css)
+![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?logo=vite)
+![Zustand](https://img.shields.io/badge/Zustand-5.0-6C47FF)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+## 📋 Функциональность
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### ✅ Основные функции (по ТЗ)
+- **Каталог услуг** - отображение всех доступных дополнительных услуг
+- **Карточка услуги** - название, описание, цена и кнопка добавления
+- **Интерактивная корзина** - добавление/удаление, изменение количества
+- **Итоговый расчет** - автоматический подсчет суммы заказа
+- **Адаптивный дизайн** - mobile-first подход, корректное отображение на всех устройствах
 
-## Expanding the ESLint configuration
+### 🎁 Дополнительные улучшения
+- **Модальная корзина** - удобный просмотр и управление выбранными услугами
+- **Persistent State** - автосохранение корзины в localStorage
+- **Иконка с счетчиком** - отображение суммы и количества в шапке
+- **Анимации и переходы** - плавные взаимодействия для улучшения UX
+- **Валидация и подтверждения** - предупреждения при очистке корзины
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🏗 Архитектура проекта
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+src/
+├── components/ # React компоненты
+│ ├── Header.tsx # Шапка приложения с иконкой корзины
+│ ├── ServiceCard.tsx # Карточка услуги для каталога
+│ ├── CartIcon.tsx # Иконка корзины с счетчиком
+│ ├── CartModal.tsx # Модальное окно корзины
+│ └── CartItem.tsx # Элемент корзины (управление количеством)
+├── store/ # Управление состоянием
+│ └── cartStore.ts # Zustand store с логикой корзины и persist
+├── types/ # TypeScript типы
+│ └── index.ts # Интерфейсы Service и SelectedService
+├── data/ # Моковые данные
+│ └── mockServices.ts # Массив услуг для демонстрации
+├── App.tsx # Корневой компонент приложения
+└── main.tsx # Точка входа
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠 Технологический стек
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Технология | Назначение | Версия |
+|------------|------------|---------|
+| **React** | Библиотека для построения UI | 19.2 |
+| **TypeScript** | Статическая типизация | 5.9 |
+| **Tailwind CSS** | Utility-first CSS фреймворк | 4.1 |
+| **Zustand** | Управление состоянием приложения | 5.0 |
+| **Vite** | Сборщик и dev-сервер | 7.2 |
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📦 Установка и запуск
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Предварительные требования
+- Node.js 18+ 
+- npm 9+ или yarn/pnpm
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Шаги установки
+
+1. **Клонирование репозитория**
+   ```bash
+   git clone <ссылка-на-репозиторий>
+   cd airline-services
+   ```
+
+2. **Установка зависимостей**
+   ```bash
+   npm install # или yarn/pnpm install
+   ```
+
+3. **Запуск приложения**
+   ```bash
+   npm run dev # или yarn/pnpm dev
+   ```
+
+## Ключевые особенности реализации
+
+### State Management
+ - Zustand для глобального состояния корзины
+ - Persist middleware для автоматического сохранения в localStorage
+ - Селекторы для оптимизации ререндеров
+
+### Стилизация
+ - Tailwind CSS v4 с нативным подходом через Vite плагин
+ - Mobile-first подход с адаптивными breakpoints
+ - Компонентный дизайн с консистентными spacing и colors
+
+ ### Доступность (Accessibility)
+ - Семантическая HTML разметка
+ - ARIA-атрибуты для кнопок и модальных окон
+ - Управление с клавиатуры (Escape для закрытия модалки)
+
+ ### Адаптивный дизайн
+ - Grid-сетка с разным количеством колонок на разных экранах
+ - Sticky-позиционирование для удобного доступа к корзине
+ - Оптимизированные touch-таргеты для мобильных устройств
+
+## Техническое задание (выполненные требования)
+
+### Обязательные требования
+
+Страница со списком услуг (данные захардкожены/замоканы)
+
+Для каждой услуги: название, цена, кнопка «Добавить»
+
+При нажатии на кнопку услуга добавляется в список выбранных
+
+Блок «Итого» с выбранными услугами, общей суммой и кнопкой «Оформить заказ»
+
+Интерфейс адаптивный (mobile-first подход)
+
+### Технические требования
+
+React + TypeScript
+
+Функциональные компоненты
+
+Корректная работа со состоянием
+
+Аккуратная и понятная структура кода
+
+## Возможные улучшения
+
+Имитация API с задержкой и состояниями загрузки/ошибки
+
+Фильтрация услуг по категориям
+
+Поиск по названию услуг
+
+Анимации добавления/удаления из корзины
+
+Юнит-тесты для компонентов и store
+
+## Лицензия
+Этот проект распространяется под лицензией MIT. Подробнее см. в файле LICENSE.
+
+## Благодарности
+
+- Иконки услуг: Emoji
+- Фавиконка www.flaticon.com
+- Шрифты: System fonts stack
+- Цветовая схема: Tailwind CSS default palette
+
