@@ -37,7 +37,7 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
           {service.icon}
         </span>
         <span 
-          className="text-xs font-medium px-2.5 py-0.5 rounded bg-[rgb(var(--primary))] bg-opacity-10 text-primary-600"
+          className="text-xs font-medium px-2.5 py-0.5 rounded bg-[rgb(var(--primary))] bg-opacity-10  text-white"
           aria-label={`Категория: ${service.category}`}
         >
           {service.category}

@@ -3,31 +3,30 @@ import { useState, useEffect } from 'react';
 const THEME_KEY = 'airline-theme';
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   // Инициализация темы
   useEffect(() => {
-    const savedTheme = localStorage.getItem(THEME_KEY) as 'light' | 'dark' | null;
+    const savedTheme = localStorage.getItem(THEME_KEY);
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    const initialIsDark = savedTheme ? savedTheme === 'dark' : prefersDark;
     
-    setTheme(initialTheme);
-    document.documentElement.setAttribute('data-theme', initialTheme);
+    setIsDarkMode(initialIsDark);
+    document.documentElement.setAttribute('data-theme', initialIsDark ? 'dark' : 'light');
   }, []);
 
   // Переключение темы
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const newIsDark = !isDarkMode;
     
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem(THEME_KEY, newTheme);
+    setIsDarkMode(newIsDark);
+    document.documentElement.setAttribute('data-theme', newIsDark ? 'dark' : 'light');
+    localStorage.setItem(THEME_KEY, newIsDark ? 'dark' : 'light');
   };
 
   return {
-    theme,
-    isDarkMode: theme === 'dark',
+    isDarkMode,
     toggleTheme,
   };
 };

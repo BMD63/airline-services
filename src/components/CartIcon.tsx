@@ -12,7 +12,7 @@ const CartIcon = ({ onClick }: CartIconProps) => {
   return (
     <button
       onClick={onClick}
-      className="relative bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg transition duration-200 active:scale-95"
+      className="relative bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-lg transition-all duration-200 active:scale-95"
       aria-label={`Открыть корзину. Товаров: ${itemCount}, на сумму: ${totalPrice} рублей`}
     >
       <div className="flex items-center">

@@ -22,18 +22,18 @@ const CartItem = ({ item }: CartItemProps) => {
   
   return (
     <div 
-      className="border-b pb-4 mb-4 last:border-0 last:mb-0"
+      className="border-color border-b pb-4 mb-4 last:border-0 last:mb-0"
       role="listitem"
       aria-label={`${item.title}, количество: ${item.quantity}, сумма: ${item.price * item.quantity} рублей`}
     >
       <div className="flex justify-between items-start mb-2">
         <div>
-          <h4 className="font-medium text-gray-900">{item.title}</h4>
-          <p className="text-sm text-gray-500">{item.price} ₽/шт</p>
+          <h4 className="font-medium text-primary">{item.title}</h4>
+          <p className="text-sm text-secondary">{item.price} ₽/шт</p>
         </div>
         <button
           onClick={handleRemove}
-          className="text-gray-400 hover:text-red-500 text-xl font-bold leading-none p-1"
+          className="text-muted hover:text-red-500 p-1 transition-colors"
           aria-label={`Удалить ${item.title} из корзины`}
         >
           <svg 
@@ -58,7 +58,7 @@ const CartItem = ({ item }: CartItemProps) => {
         <div className="flex items-center gap-2">
           <button
             onClick={handleDecrease}
-            className="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-md text-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-md text-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             aria-label={`Уменьшить количество ${item.title}`}
             disabled={item.quantity <= 1}
             aria-disabled={item.quantity <= 1}
@@ -66,7 +66,7 @@ const CartItem = ({ item }: CartItemProps) => {
             −
           </button>
           <span 
-            className="font-medium w-8 text-center"
+            className="font-medium w-8 text-center text-primary"
             aria-live="polite"
             aria-atomic="true"
           >
@@ -74,7 +74,7 @@ const CartItem = ({ item }: CartItemProps) => {
           </span>
           <button
             onClick={handleIncrease}
-            className="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-md text-lg font-bold"
+            className="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-md text-lg font-bold transition-colors"
             aria-label={`Увеличить количество ${item.title}`}
           >
             +
@@ -83,7 +83,7 @@ const CartItem = ({ item }: CartItemProps) => {
         
         <div className="text-right">
           <p 
-            className="font-bold text-gray-900"
+            className="font-bold text-primary"
             aria-label={`Общая сумма за ${item.title}: ${item.price * item.quantity} рублей`}
           >
             {item.price * item.quantity} ₽

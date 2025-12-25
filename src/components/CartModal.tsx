@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'; // Добавляем useRef
+import { useEffect, useRef } from 'react';
 import { useCartStore } from '../store/cartStore';
 import CartItem from './CartItem';
 
@@ -27,7 +27,6 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
       document.body.style.overflow = 'hidden';
-      // Добавляем роль для скринридеров
       document.body.setAttribute('aria-hidden', 'true');
     }
     
@@ -69,22 +68,22 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
       <div 
         ref={modalRef}
         tabIndex={-1}
-        className="bg-white rounded-xl shadow-2xl w-full max-w-md max-h-[90vh] flex flex-col focus:outline-none"
+        className="bg-card rounded-xl shadow-2xl w-full max-w-md max-h-[90vh] flex flex-col focus:outline-none"
       >
         {/* Заголовок модалки */}
-        <div className="flex justify-between items-center p-6 border-b">
+        <div className="flex justify-between items-center p-6 border-color border-b">
           <h2 
             id="cart-modal-title"
-            className="text-xl font-semibold text-gray-800"
+            className="text-xl font-semibold text-primary"
           >
             🛒 Ваша корзина
           </h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 text-2xl font-bold leading-none p-2"
+            className="text-muted hover:text-primary text-2xl font-bold leading-none p-2 transition-colors"
             aria-label="Закрыть окно корзины"
           >
-            ×
+            <span aria-hidden="true">×</span>
           </button>
         </div>
         
@@ -95,9 +94,9 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
         >
           {selectedServices.length === 0 ? (
             <div className="text-center py-8">
-              <div className="text-5xl mb-3 text-gray-300">🛒</div>
-              <p className="text-gray-500">Корзина пуста</p>
-              <p className="text-sm text-gray-400 mt-1">
+              <div className="text-5xl mb-3 text-muted opacity-50">🛒</div>
+              <p className="text-secondary">Корзина пуста</p>
+              <p className="text-sm text-muted mt-1">
                 Добавьте услуги из списка
               </p>
             </div>
@@ -115,7 +114,7 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
         </div>
         
         {/* Футер модалки */}
-        <div className="border-t p-6">
+        <div className="border-color border-t p-6">
           {selectedServices.length > 0 && (
             <>
               <div 
@@ -123,9 +122,9 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
                 aria-live="polite"
                 aria-atomic="true"
               >
-                <span>Итого:</span>
+                <span className="text-primary">Итого:</span>
                 <span 
-                  className="text-blue-600"
+                  className="text-primary-600"
                   aria-label={`Общая сумма заказа: ${total} рублей`}
                 >
                   {total} ₽
@@ -135,17 +134,17 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
               <div className="flex gap-3">
                 <button
                   onClick={handleClear}
-                  className="flex-1 border border-red-500 text-red-500 hover:bg-red-50 font-medium py-3 px-4 rounded-lg transition duration-200"
+                  className="flex-1 border border-red-500 text-red-500 hover:bg-opacity-10 hover:bg-red-500 font-medium py-3 px-4 rounded-lg transition duration-200"
                   aria-label="Очистить всю корзину"
                 >
                   Очистить
                 </button>
                 <button
                   onClick={handleCheckout}
-                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200"
+                  className="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200"
                   aria-label={`Оформить заказ на сумму ${total} рублей`}
                 >
-                  Оформить заказ
+                  Оформить
                 </button>
               </div>
             </>
@@ -153,7 +152,7 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
           
           <button
             onClick={onClose}
-            className="w-full mt-4 border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition duration-200"
+            className="w-full mt-4 border border-color text-secondary hover:bg-gray-100 font-medium py-3 px-4 rounded-lg transition duration-200"
             aria-label="Продолжить выбор услуг"
           >
             Продолжить выбор

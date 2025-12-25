@@ -61,6 +61,10 @@
   color: rgb(var(--text-primary));
 }
 
+.text-primary-600 {
+  color: rgb(var(--primary));
+}
+
 .text-secondary {
   color: rgb(var(--text-secondary));
 }
@@ -100,3 +104,4 @@
 .text-red-500 {
   color: rgb(var(--danger));
 }
+
