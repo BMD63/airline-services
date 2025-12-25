@@ -4,13 +4,13 @@ import { mockServices } from './data/mockServices';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-6 lg:p-8">
+    <div className="min-h-screen bg-primary p-4 md:p-6 lg:p-8">
       <div className="max-w-7xl mx-auto">
         <Header />
         
         <main>
-          <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-6">
+          <div className="bg-card rounded-xl shadow-lg p-4 md:p-6">
+            <h2 className="text-xl font-semibold text-primary mb-6">
               Доступные услуги
             </h2>
             
@@ -23,7 +23,7 @@ function App() {
               ))}
             </div>
             
-            <div className="mt-8 text-center text-gray-500 text-sm">
+            <div className="mt-8 text-center text-muted text-sm">
               <p>Выберите услуги и откройте корзину для оформления заказа</p>
             </div>
           </div>
