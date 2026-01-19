@@ -3,6 +3,8 @@
 **MVP веб-приложения** для выбора и оформления дополнительных услуг при авиаперелетах.  
 Проект выполнен в рамках технического задания с использованием современных технологий React-стека.
 
+задание находится в корне проекта - TASK
+
 ![React](https://img.shields.io/badge/React-19.2-blue?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?logo=typescript)
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?logo=tailwind-css)
